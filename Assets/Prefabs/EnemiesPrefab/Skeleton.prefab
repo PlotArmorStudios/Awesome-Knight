@@ -862,7 +862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectionRadius: 5
-  _attackRadius: 2
+  _attackRadius: 3
   _attackDelay: 2
   _returnHomeTime: 4
   _homeRadius: 5

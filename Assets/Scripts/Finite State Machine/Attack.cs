@@ -10,6 +10,7 @@ public class Attack : IState
     private readonly Animator _animator;
     private readonly Player _player;
 
+    private EnemyAttack _enemyAttack;
     private float _attackTimer;
     private float _attackDelay;
 
@@ -19,6 +20,8 @@ public class Attack : IState
         _player = player;
         _animator = _entity.Animator;
         _attackTimer = 4.5f;
+
+        _enemyAttack = _entity.GetComponent<EnemyAttack>();
     }
 
     public void Tick()
@@ -47,7 +50,7 @@ public class Attack : IState
 
         if (_attackTimer > _attackDelay)
         {
-            int randomAttack = UnityEngine.Random.Range(1, 3);
+            int randomAttack = Random.Range(1, 3);
             _animator.SetInteger("Atk", randomAttack);
             _attackTimer = 0;
         }

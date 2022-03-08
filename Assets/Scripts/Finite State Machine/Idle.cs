@@ -7,10 +7,12 @@ public class Idle : IState
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
     private Rigidbody _rigidbody;
-    
+
     private float _returnHomeTimer;
     private float _returnHomeTime;
-    
+    private float _patrolTime;
+    private float _timeToActivatePatrol;
+
     public Idle(Entity entity)
     {
         _entity = entity;
@@ -28,22 +30,40 @@ public class Idle : IState
     public void OnEnter()
     {
         _returnHomeTimer = 0;
+        _patrolTime = 0;
+
         _navMeshAgent.enabled = false;
         _animator.SetBool("Running", false);
+        _timeToActivatePatrol = 3;
     }
 
     public void OnExit()
     {
+        _patrolTime = 0;
     }
-    
+
     public bool UpdateReturnHomeTime()
     {
+        //if (_entity.StateMachine.IsHome) return false;
+
         _returnHomeTimer += Time.deltaTime;
+
         if (_returnHomeTimer >= _returnHomeTime)
         {
             _returnHomeTimer = _returnHomeTime;
             return true;
         }
+
+        return false;
+    }
+
+    public bool TogglePatrol()
+    {
+        if (!_entity.StateMachine.IsHome) return false;
+        //if (_entity.StateMachine.CurrentState == typeof(Idle)) return false;
+
+        _patrolTime += Time.deltaTime;
+        if (_patrolTime >= _timeToActivatePatrol) return true;
 
         return false;
     }

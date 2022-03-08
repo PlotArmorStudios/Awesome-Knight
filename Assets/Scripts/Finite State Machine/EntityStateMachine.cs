@@ -1,4 +1,4 @@
-//#define DEBUG_LOG
+#define DEBUG_LOG
 
 using System;
 using System.Collections;
@@ -20,9 +20,11 @@ public class EntityStateMachine : MonoBehaviour
     private Dead _dead;
     private ReturnHome _returnHome;
     private Patrol _patrol;
-    
-    private bool IsHome => Vector3.Distance(_entity.transform.position, _entity.InitialPosition) > _entity.HomeRadius;
+
+    public IState CurrentState => _stateMachine.CurrentState;
+    public bool IsHome => Vector3.Distance(_entity.transform.position, _entity.InitialPosition) < _entity.HomeRadius;
     private float DistanceToPlayer => Vector3.Distance(_navMeshAgent.transform.position, _player.transform.position);
+    public bool Patrolling => _idle.TogglePatrol();
 
     private void Start()
     {
@@ -53,11 +55,11 @@ public class EntityStateMachine : MonoBehaviour
 
     private void AddStateTransitions()
     {
-        // _stateMachine.AddTransition(
-        //     _idle,
-        //     _patrol,
-        //     () => ShouldPatrol());
-        //
+        _stateMachine.AddTransition(
+            _idle,
+            _patrol,
+            () => Patrolling);
+        
         // _stateMachine.AddTransition(
         //     _patrol,
         //     _idle,
@@ -81,18 +83,18 @@ public class EntityStateMachine : MonoBehaviour
         _stateMachine.AddTransition(
             _chasePlayer,
             _attack,
-            () => DistanceToPlayer < _entity.AttackRadius);
+            () => DistanceToPlayer <= _entity.AttackRadius);
 
         _stateMachine.AddTransition(
             _attack,
-            _idle,
+            _chasePlayer,
             () => DistanceToPlayer > _entity.AttackRadius);
-
+        
         _stateMachine.AddTransition(
             _idle,
             _returnHome,
             () => !IsHome && _idle.UpdateReturnHomeTime());
-
+        
         _stateMachine.AddTransition(
             _returnHome,
             _idle,
@@ -106,17 +108,10 @@ public class EntityStateMachine : MonoBehaviour
         _stateMachine.AddAnyTransition(_dead, () => _entity.Health.CurrentHealthValue <= 0);
     }
 
-
-    private bool ShouldPatrol()
-    {
-        return false;
-    }
-
     private void Update()
     {
 #if DEBUG_LOG
-        Debug.Log(_entity.DetectionRadius);
-        
+        Debug.Log("Enemy is patrolling: " + Patrolling);
 #endif
         _stateMachine.Tick();
     }
