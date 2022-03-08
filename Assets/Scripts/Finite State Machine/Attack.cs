@@ -45,14 +45,15 @@ public class Attack : IState
         _entity.transform.rotation = Quaternion.Slerp(_entity.transform.rotation,
             Quaternion.LookRotation(_player.transform.position - _entity.transform.position), 5f * Time.deltaTime);
 
-        if (_attackTimer >= _attackDelay)
+        if (_attackTimer > _attackDelay)
         {
-            _animator.SetBool("Attacking", true);
+            int randomAttack = UnityEngine.Random.Range(1, 3);
+            _animator.SetInteger("Atk", randomAttack);
             _attackTimer = 0;
         }
         else
         {
-            _animator.SetBool("Attacking", false);
+            _animator.SetInteger("Atk", 0);
         }
     }
 }

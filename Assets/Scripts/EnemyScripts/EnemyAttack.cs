@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-
     public float damageAmount = 10f;
-    Transform playerTarget;
-    Animator anim;
+    Transform _playerTarget;
+    Animator _animator;
 
     bool finishedAttack = true;
     float damageDistance = 2f;
 
-    PlayerHealth playerHealth;
+    private Entity _entity;
+    
+    PlayerHealth _playerHealth;
+
     // Start is called before the first frame update
     void Awake()
     {
-        playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
-        anim = GetComponent<Animator>();
+        _entity = GetComponent<Entity>();
+        _playerHealth = _entity.PlayerTarget.GetComponent<PlayerHealth>();
+        _animator = GetComponent<Animator>();
 
-        playerHealth = playerTarget.GetComponent<PlayerHealth>();
+        _playerHealth = _playerTarget.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -27,14 +30,14 @@ public class EnemyAttack : MonoBehaviour
     {
         if (finishedAttack)
         {
-            if (playerTarget)
+            if (_playerTarget)
             {
                 DealDamage(CheckIfAttacking());
             }
         }
         else
         {
-            if (!anim.IsInTransition(0) && anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (!_animator.IsInTransition(0) && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 finishedAttack = true;
             }
@@ -45,9 +48,10 @@ public class EnemyAttack : MonoBehaviour
     {
         bool isAttacking = false;
 
-        if(!anim.IsInTransition(0) && anim.GetCurrentAnimatorStateInfo(0).IsName("Atk1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Atk2"))
+        if (!_animator.IsInTransition(0) && _animator.GetCurrentAnimatorStateInfo(0).IsName("Atk1") ||
+            _animator.GetCurrentAnimatorStateInfo(0).IsName("Atk2"))
         {
-            if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+            if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
             {
                 isAttacking = true;
                 finishedAttack = false;
@@ -59,12 +63,9 @@ public class EnemyAttack : MonoBehaviour
 
     void DealDamage(bool isAttacking)
     {
-        if(isAttacking)
+        if (Vector3.Distance(transform.position, _playerTarget.position) <= damageDistance)
         {
-            if(Vector3.Distance(transform.position, playerTarget.position) <= damageDistance)
-            {
-                playerHealth.TakeDamage(damageAmount);
-            }
+            _playerHealth.TakeDamage(damageAmount);
         }
     }
 }

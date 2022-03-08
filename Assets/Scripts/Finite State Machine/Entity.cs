@@ -19,11 +19,11 @@ public class Entity : MonoBehaviour
     public EnemyHealth Health { get; private set; }
     
     //Public access to AI values
-    public float HomeRadius { get; set; }
-    public float ReturnHomeTime { get; set; }
-    public float AttackDelay { get; set; }
-    public float DetectionRadius { get; set; }
-    public float AttackRadius { get; set; }
+    public float HomeRadius => _homeRadius;
+    public float ReturnHomeTime => _returnHomeTime;
+    public float AttackDelay => _attackDelay;
+    public float DetectionRadius => _detectionRadius;
+    public float AttackRadius => _attackRadius;
 
     private float _attackTimer;
     private bool _canResetNavMesh;

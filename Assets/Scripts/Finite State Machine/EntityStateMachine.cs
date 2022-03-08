@@ -21,7 +21,7 @@ public class EntityStateMachine : MonoBehaviour
     private ReturnHome _returnHome;
     private Patrol _patrol;
     
-    private bool IsHome => Vector3.Distance(_entity.transform.position, _entity.InitialPosition) <= _entity.HomeRadius;
+    private bool IsHome => Vector3.Distance(_entity.transform.position, _entity.InitialPosition) > _entity.HomeRadius;
     private float DistanceToPlayer => Vector3.Distance(_navMeshAgent.transform.position, _player.transform.position);
 
     private void Start()
@@ -53,21 +53,26 @@ public class EntityStateMachine : MonoBehaviour
 
     private void AddStateTransitions()
     {
-        _stateMachine.AddTransition(
-            _idle,
-            _patrol,
-            () => ShouldPatrol());
-
-        _stateMachine.AddTransition(
-            _patrol,
-            _idle,
-            () => !ShouldPatrol());
+        // _stateMachine.AddTransition(
+        //     _idle,
+        //     _patrol,
+        //     () => ShouldPatrol());
+        //
+        // _stateMachine.AddTransition(
+        //     _patrol,
+        //     _idle,
+        //     () => !ShouldPatrol());
 
         _stateMachine.AddTransition(
             _idle,
             _chasePlayer,
             () => DistanceToPlayer < _entity.DetectionRadius);
 
+        _stateMachine.AddTransition(
+            _chasePlayer,
+            _idle,
+            () => DistanceToPlayer > _entity.DetectionRadius);
+     
         _stateMachine.AddTransition(
             _patrol,
             _chasePlayer,
@@ -80,14 +85,6 @@ public class EntityStateMachine : MonoBehaviour
 
         _stateMachine.AddTransition(
             _attack,
-            _chasePlayer,
-            () => DistanceToPlayer > _entity.AttackRadius);
-        _stateMachine.AddTransition(
-            _attack,
-            _idle,
-            () => DistanceToPlayer > _entity.AttackRadius);
-        _stateMachine.AddTransition(
-            _chasePlayer,
             _idle,
             () => DistanceToPlayer > _entity.AttackRadius);
 
@@ -118,9 +115,8 @@ public class EntityStateMachine : MonoBehaviour
     private void Update()
     {
 #if DEBUG_LOG
-        Debug.Log("Launch: " + Launch);
-        Debug.Log("Hitstun: " + Hitstun);
-        Debug.Log(FallTime);
+        Debug.Log(_entity.DetectionRadius);
+        
 #endif
         _stateMachine.Tick();
     }

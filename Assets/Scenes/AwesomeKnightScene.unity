@@ -470,6 +470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 146562125511410768, guid: eec1ca7a4891d25438dae7b40a4e7b97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec1ca7a4891d25438dae7b40a4e7b97, type: 3}
 --- !u!1 &417407146
@@ -2739,6 +2743,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 146562125511410768, guid: eec1ca7a4891d25438dae7b40a4e7b97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec1ca7a4891d25438dae7b40a4e7b97, type: 3}
 --- !u!1 &1551860487
@@ -3060,6 +3068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 129828, guid: 7b390dab51bb74f1d8de95c4e75d3b4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 429830, guid: 7b390dab51bb74f1d8de95c4e75d3b4a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3108,6 +3120,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 8536305024355508298, guid: 7b390dab51bb74f1d8de95c4e75d3b4a, type: 3}
+      propertyPath: _homeRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536305024355508298, guid: 7b390dab51bb74f1d8de95c4e75d3b4a, type: 3}
+      propertyPath: _attackDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536305024355508298, guid: 7b390dab51bb74f1d8de95c4e75d3b4a, type: 3}
+      propertyPath: _attackRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536305024355508298, guid: 7b390dab51bb74f1d8de95c4e75d3b4a, type: 3}
+      propertyPath: _returnHomeTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536305024355508298, guid: 7b390dab51bb74f1d8de95c4e75d3b4a, type: 3}
+      propertyPath: _detectionRadius
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b390dab51bb74f1d8de95c4e75d3b4a, type: 3}
 --- !u!1001 &1759692800
@@ -3168,6 +3200,14 @@ PrefabInstance:
     - target: {fileID: 146562125511410768, guid: eec1ca7a4891d25438dae7b40a4e7b97, type: 3}
       propertyPath: m_Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6371421907398688455, guid: eec1ca7a4891d25438dae7b40a4e7b97, type: 3}
+      propertyPath: _attackRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745584127773593309, guid: eec1ca7a4891d25438dae7b40a4e7b97, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec1ca7a4891d25438dae7b40a4e7b97, type: 3}

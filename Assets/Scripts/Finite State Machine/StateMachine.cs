@@ -9,8 +9,6 @@ public class StateMachine //Stores a list of states that can be added or removed
     private IState _currentState;
     private StateTransition _transition;
 
-    //Add states to the state machine
- 
     //Add state transitions to the state machine
     public void AddTransition(IState from, IState to, Func<bool> condition)
     {
@@ -26,6 +24,7 @@ public class StateMachine //Stores a list of states that can be added or removed
         var stateTransition = new StateTransition(null, to, condition);
         _anyStateTransitions.Add(stateTransition);
     }
+    
     public void SetState(IState state)
     {
         if (_currentState == state)
