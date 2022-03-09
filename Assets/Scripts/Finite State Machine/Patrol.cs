@@ -1,3 +1,5 @@
+//#define PatrolDebug
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -58,12 +60,16 @@ public class Patrol : IState
     {
         var randomX = UnityEngine.Random.Range(-_entity.HomeRadius, _entity.HomeRadius + 1);
         var randomZ = UnityEngine.Random.Range(-_entity.HomeRadius, _entity.HomeRadius + 1);
+#if PatrolDebug
         Debug.Log("X: " + randomX);
         Debug.Log("Y: " + randomX);
+#endif
         _newDestination = new Vector3(_entity.InitialPosition.x + randomX, _entity.InitialPosition.y,
             _entity.InitialPosition.z + randomZ);
 
+#if PatrolDebug
         Debug.Log("New destination is: " + _newDestination);
+#endif
         _navMeshAgent.destination = _newDestination;
         _animator.SetBool("Running", true);
         _patrolling = true;

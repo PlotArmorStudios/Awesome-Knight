@@ -1,4 +1,4 @@
-#define DEBUG_LOG
+//#define DEBUG_LOG
 
 using System;
 using System.Collections;
@@ -59,11 +59,6 @@ public class EntityStateMachine : MonoBehaviour
             _idle,
             _patrol,
             () => Patrolling);
-        
-        // _stateMachine.AddTransition(
-        //     _patrol,
-        //     _idle,
-        //     () => !ShouldPatrol());
 
         _stateMachine.AddTransition(
             _idle,

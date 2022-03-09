@@ -44,8 +44,6 @@ public class Idle : IState
 
     public bool UpdateReturnHomeTime()
     {
-        //if (_entity.StateMachine.IsHome) return false;
-
         _returnHomeTimer += Time.deltaTime;
 
         if (_returnHomeTimer >= _returnHomeTime)
@@ -60,7 +58,6 @@ public class Idle : IState
     public bool TogglePatrol()
     {
         if (!_entity.StateMachine.IsHome) return false;
-        //if (_entity.StateMachine.CurrentState == typeof(Idle)) return false;
 
         _patrolTime += Time.deltaTime;
         if (_patrolTime >= _timeToActivatePatrol) return true;

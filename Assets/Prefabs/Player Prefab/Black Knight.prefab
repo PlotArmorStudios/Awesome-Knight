@@ -6744,6 +6744,8 @@ MonoBehaviour:
   m_fillWaitImage_4: {fileID: 0}
   m_fillWaitImage_5: {fileID: 0}
   m_fillWaitImage_6: {fileID: 0}
+  _moreManaText: {fileID: 0}
+  mana: 200
   m_manaImage: {fileID: 0}
 --- !u!114 &892032149
 MonoBehaviour:

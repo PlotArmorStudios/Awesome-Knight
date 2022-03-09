@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9529916}
   - component: {fileID: 14329916}
   - component: {fileID: 195992049912223466}
-  - component: {fileID: 6473242529586286607}
   - component: {fileID: 1741862484}
   - component: {fileID: 4698987845931544195}
   - component: {fileID: 1741862491}
@@ -107,19 +106,6 @@ NavMeshAgent:
   m_BaseOffset: -0.09
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
---- !u!114 &6473242529586286607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7d26926e6c80f54da2ae008638c8277, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossState: 0
 --- !u!114 &1741862484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,11 +287,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6923c1cbc74dc38ca639dfc75ae68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectionRadius: 0
-  _attackRadius: 0
-  _attackDelay: 0
-  _returnHomeTime: 0
-  _homeRadius: 0
+  _detectionRadius: 8
+  _attackRadius: 2
+  _attackDelay: 2
+  _returnHomeTime: 4
+  _homeRadius: 5
 --- !u!114 &7171519684845254188
 MonoBehaviour:
   m_ObjectHideFlags: 0

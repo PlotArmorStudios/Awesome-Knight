@@ -602,9 +602,7 @@ GameObject:
   - component: {fileID: 144152622338314590}
   - component: {fileID: 242381383762617798}
   - component: {fileID: 1141660234634232814}
-  - component: {fileID: 1759692803}
   - component: {fileID: 7428699661833046025}
-  - component: {fileID: 5392240123682810832}
   - component: {fileID: 1759692810}
   - component: {fileID: 7745584127773593309}
   - component: {fileID: 770690574}
@@ -677,23 +675,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
---- !u!114 &1759692803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146562125511410768}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a3fb381e0a409e4c8f0f6231126d8fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCurrentState: 0
-  growlSound: {fileID: 8300000, guid: 56e009feab779d94da7893676f21487a, type: 3}
-  firstSwordSwingSound: {fileID: 8300000, guid: 00306818c268e3346b98aae1fef24ed2, type: 3}
-  secondSwordSwingSound: {fileID: 8300000, guid: 888e6ce03e611f143a5673195b958d98, type: 3}
-  oneShotSoundInt: 0
 --- !u!114 &7428699661833046025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,24 +689,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MaxHealth: 100
   healthImg: {fileID: 1425930526}
---- !u!143 &5392240123682810832
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146562125511410768}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.29
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.0001
-  m_MinMoveDistance: 0.001
-  m_Center: {x: -0.05, y: 1, z: 0}
 --- !u!136 &1759692810
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -862,7 +825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectionRadius: 5
-  _attackRadius: 3
+  _attackRadius: 2
   _attackDelay: 2
   _returnHomeTime: 4
   _homeRadius: 5
